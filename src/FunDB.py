@@ -2,6 +2,11 @@ import os
 import uuid
 import json
 
+# Import logger file
+from .logger import logger_file
+# giving logger file name
+logger = logger_file.getLogger('general')
+
 
 class FunDB(object):
 
@@ -16,7 +21,7 @@ class FunDB(object):
         try:
             self.db = json.load(open(self.location, "r"))
         except Exception as err:
-            print("Can't open database {}".format(err))
+            logger.error("Can't open database {}".format(err))
 
     def set(self, key, value):
         """
@@ -25,17 +30,16 @@ class FunDB(object):
         :return:
         """
         try:
-            # self.db[str(key).lower()] = value
             self.db[str(uuid.uuid4())] = {str(key).lower(): value}
             self.dump_db()
         except Exception as err:
-            print(err)
+            logger.error("Data set error {}".format(err))
 
     def dump_db(self):
         try:
             json.dump(self.db, open(self.location, "w+"))
         except Exception as err:
-            print("Dump error {}".format(err))
+            logger.error("Dump error {}".format(err))
 
     def get(self, pk):
         """
@@ -43,9 +47,9 @@ class FunDB(object):
         :return:
         """
         try:
-            return self.db.get(pk)
+            return self.db[pk]
         except Exception as err:
-            print("Can't find data {}".format(err))
+            logger.error("Can't find data {}".format(err))
 
     def delete(self, pk):
         try:
@@ -53,7 +57,7 @@ class FunDB(object):
             self.dump_db()
             return True
         except Exception as err:
-            print("Item can't delete {}".format(err))
+            logger.error("Item can't delete {}".format(err))
             return False
 
     def reset_db(self):
