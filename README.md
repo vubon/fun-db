@@ -8,6 +8,7 @@ This is a experimental database. This database behaviours like a NoSQL database.
 | Set   | `Done`       
 | Delete  | `Done`      |
 | Get    | `Done`       | 
+| Update    | `Pending`       | 
 | All   | `Done`       | 
 
 ## Futures List
