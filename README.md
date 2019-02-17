@@ -15,6 +15,7 @@ This is a experimental database. This database behaviours like a NoSQL database.
 | Futures name   | Status       |
 | ---    | ---         | 
 | Log collections    | `Done`       |  
+| DB Reset    | `Done`       |  
 
 
 ## Uses
@@ -38,3 +39,11 @@ True
 
 ```
 The return ID is a unique ID and by this ID we can get our data.
+
+If you want to reset the DB. Follow below process 
+
+```pythondoc
+>>> from src.FunDB import FunDB
+>>> obj = FunDB("./fun.db")
+>>> obj.reset_db()
+```
