@@ -7,9 +7,6 @@ class FunDB(object):
 
     def __init__(self, location):
         self.location = os.path.expanduser(location)
-        self.load(self.location)
-
-    def load(self, location):
         if os.path.exists(location):
             self._load()
         else:
