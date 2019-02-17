@@ -1,5 +1,5 @@
 # Fun DB(Fun Database)
-This is a experimental database. This database behaviours like a NoSQL database.
+This is an experimental database. This database behaviours like a NoSQL database.
 
 ## API List
 
@@ -47,3 +47,7 @@ If you want to reset the DB. Follow below process
 >>> obj = FunDB("./fun.db")
 >>> obj.reset_db()
 ```
+
+How to Contribute
+-----------------
+If you want to contribute, Please contact with this email vubon.roy@gmail.com 
