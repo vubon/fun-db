@@ -56,7 +56,10 @@ class FunDB(object):
         except Exception as err:
             logger.error("Can't find data {}".format(err))
 
-    def filter(self):
+    def all(self):
+        """
+        :return:
+        """
         try:
             return self.db
         except Exception as err:
