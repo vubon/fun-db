@@ -34,25 +34,33 @@ class FunDB(object):
         """
         try:
             self.db[str(uuid.uuid4())] = {str(key).lower(): value}
-            self.dump_db()
+            return self.dump_db()
         except Exception as err:
             logger.error("Data set error {}".format(err))
 
     def dump_db(self):
         try:
             json.dump(self.db, open(self.location, "w+"))
+            return self.db.popitem()[0]
         except Exception as err:
             logger.error("Dump error {}".format(err))
 
-    def get(self, pk):
+    def get(self):
         """
         :param pk:
         :return:
         """
         try:
-            return self.db[pk]
+            print(self.db)
+            return
         except Exception as err:
             logger.error("Can't find data {}".format(err))
+
+    def filter(self):
+        try:
+            return self.db
+        except Exception as err:
+            logger.error("Con't load data {}".format(err))
 
     def delete(self, pk):
         try:
