@@ -1,5 +1,4 @@
 import os
-# from logging.handlers import TimedRotatingFileHandler
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,6 +24,13 @@ LOGGING = {
             'when': 'MIDNIGHT',
             'formatter': 'main_formatter'
         },
+        'access_db': {
+            'level': 'INFO',
+            'filename': os.path.join(BASE_DIR, 'db_logs/db_access.log'),
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'when': 'MIDNIGHT',
+            'formatter': 'main_formatter'
+        }
     },
     'formatters': {
         'main_formatter': {
@@ -38,8 +44,12 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'access': {
+            'handlers': ['access_db'],
+            'level': 'INFO',
+            'propagate': True
+        }
     },
 }
 
 # LOG SETUP END #
-

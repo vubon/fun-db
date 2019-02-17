@@ -4,8 +4,10 @@ import json
 
 # Import logger file
 from .logger import logger_file
+
 # giving logger file name
 logger = logger_file.getLogger('general')
+access_logger = logger_file.getLogger('access')
 
 
 class FunDB(object):
@@ -20,6 +22,7 @@ class FunDB(object):
     def _load(self):
         try:
             self.db = json.load(open(self.location, "r"))
+            access_logger.info(f'Reading Database {self.db}')
         except Exception as err:
             logger.error("Can't open database {}".format(err))
 
@@ -63,3 +66,4 @@ class FunDB(object):
     def reset_db(self):
         self.db = {}
         self.dump_db()
+        access_logger.info('Database reset')
