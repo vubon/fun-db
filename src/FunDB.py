@@ -41,18 +41,18 @@ class FunDB(object):
     def dump_db(self):
         try:
             json.dump(self.db, open(self.location, "w+"))
-            return self.db.popitem()[0]
         except Exception as err:
             logger.error("Dump error {}".format(err))
 
-    def get(self):
+        return list(self.db)[-1]
+
+    def get(self, pk):
         """
         :param pk:
         :return:
         """
         try:
-            print(self.db)
-            return
+            return self.db[pk]
         except Exception as err:
             logger.error("Can't find data {}".format(err))
 
