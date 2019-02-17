@@ -34,7 +34,6 @@ class FunDB(object):
     def dump_db(self):
         try:
             json.dump(self.db, open(self.location, "w+"))
-
         except Exception as err:
             print("Dump error {}".format(err))
 
@@ -47,6 +46,15 @@ class FunDB(object):
             return self.db.get(pk)
         except Exception as err:
             print("Can't find data {}".format(err))
+
+    def delete(self, pk):
+        try:
+            del self.db[pk]
+            self.dump_db()
+            return True
+        except Exception as err:
+            print("Item can't delete {}".format(err))
+            return False
 
     def reset_db(self):
         self.db = {}
