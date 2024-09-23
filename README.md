@@ -3,19 +3,19 @@ This is an experimental database. This database behaviours like a NoSQL database
 
 ## API List
 
-| API name   | Status       |
-| ---    | ---         | 
-| Set   | `Done`       
-| Delete  | `Done`      |
-| Get    | `Done`       | 
-| Update    | `Pending`       | 
-| All   | `Done`       | 
+| API name | Status |
+|----------|--------| 
+| Set      | `Done` |
+| Delete   | `Done` |
+| Get      | `Done` | 
+| Update   | `Done` | 
+| All      | `Done` | 
 
 ## Futures List
-| Futures name   | Status       |
-| ---    | ---         | 
-| Log collections    | `Done`       |  
-| DB Reset    | `Done`       |  
+| Futures name    | Status |
+|-----------------|--------| 
+| Log collections | `Done` |  
+| DB Reset        | `Done` |  
 
 
 ## Uses
@@ -31,7 +31,8 @@ Set, Get, All, Delete Data from Fun DB
 >>> obj.all()
 {'66f32be9-417c-4fdb-8f95-c7bd08c24e81': {'name': 'Vubon Roy'},
  '3c124e7b-6998-45b3-96c8-9419a7d41f29': {'name': 'Vubon Roy'}}
- 
+>>> obj.get('66f32be9-417c-4fdb-8f95-c7bd08c24e81')
+{'name': 'Vubon Roy'}
 >>> obj.delete('66f32be9-417c-4fdb-8f95-c7bd08c24e81')
 True
 >>> obj.all()
